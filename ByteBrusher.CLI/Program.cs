@@ -1,6 +1,4 @@
 ﻿using ByteBrusher.Model;
-using ByteBrusher.Model.Implementation;
-using CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -36,7 +34,7 @@ public class Program
 
     private static void Main(string[] args)
     {
-        IHost host = IByteBrusherClient.DependencyResolver.DependencyResolver.CreateHostBuilder(args).Build();
+        IHost host = DependencyResolver.DependencyResolver.CreateHostBuilder(args).Build();
 
         if (args.Length == 0)
             Console.WriteLine("there were no console arguments!");
@@ -49,13 +47,5 @@ public class Program
 
         _byteBrusherClient.ExecuteAsync(CliOptions.DeleteFlag, CliOptions.Path);
         _logger.LogInformation("---- < ByteBrusher.CLI finished > ----");
-    }
-    
-    public static CliOptions ParseCommandLineOptions(string[] args)
-    {
-        ParserResult<CliOptions>? parsedOptions = Parser.Default.ParseArguments<CliOptions>(args);
-        return parsedOptions.Tag == ParserResultType.Parsed
-            ? ((Parsed<CliOptions>)parsedOptions).Value
-            : throw new ArgumentNullException(nameof(args));
     }
 }
