@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
@@ -24,11 +25,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Remove="StyleCop.Analyzers" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ByteBrusher.DependencyResolver\ByteBrusher.DependencyResolver.csproj" />
-    <ProjectReference Include="..\ByteBrusher.Util.Abstraction\ByteBrusher.Util.Abstraction.csproj" />
   </ItemGroup>
 
 </Project>
